@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evoluciona Tech | Desarrollo de software y soluciones tecnológicas</title>
+<meta name="description" content="Tu negocio evoluciona. Tu tecnología también. Desarrollo de software a la medida, integraciones entre sistemas, automatización de procesos y páginas web desde $99 en Ecuador.">
+<meta property="og:title" content="Evoluciona Tech | Desarrollo de software y soluciones tecnológicas">
+<meta property="og:description" content="Tu negocio evoluciona. Tu tecnología también.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230E3B43'/%3E%3Cpolygon points='22,40 34,40 34,47 64,47 64,57 34,57 34,66 52,66 52,76 22,76' fill='%23fff'/%3E%3Cpolygon points='22,24 80,24 73,34 22,34' fill='%23F0B55A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --petroleo:#0E3B43; --petroleo-2:#154B55; --petroleo-3:#0a2c33;
+  --ambar:#D9962B; --ambar-claro:#F0B55A; --ambar-prof:#8F5E14;
+  --pizarra:#5A6E72; --pizarra-claro:#A9C0C3; --arena:#F3F1EC; --blanco:#fff;
+  --linea:#E5E1D8; --wa:#25D366;
+  --r:14px; --max:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:var(--petroleo);background:var(--blanco);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ambar-prof)}
+.eyebrow:before{content:"";width:28px;height:3px;background:var(--ambar)}
+.dark .eyebrow{color:var(--ambar-claro)}
+h1,h2,h3{letter-spacing:-.025em;line-height:1.1}
+h2{font-size:clamp(30px,4vw,46px);font-weight:800;margin:14px 0 16px}
+.lead{font-size:clamp(17px,1.6vw,19px);color:var(--pizarra);max-width:640px}
+.dark .lead{color:#C6D6D8}
+section{padding:110px 0}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:16px;padding:16px 26px;border-radius:10px;transition:transform .2s,box-shadow .2s,background .2s;cursor:pointer;border:0}
+.btn:hover{transform:translateY(-2px)}
+.btn-amb{background:var(--ambar);color:#fff;box-shadow:0 10px 30px rgba(217,150,43,.35)}
+.btn-amb:hover{background:#c8861f}
+.btn-ghost{border:1.5px solid rgba(255,255,255,.35);color:#fff}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+.btn-wa{background:var(--wa);color:#fff;box-shadow:0 10px 30px rgba(37,211,102,.35)}
+.btn svg{width:20px;height:20px}
+
+/* ---------- NAV ---------- */
+header{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s,box-shadow .3s,padding .3s;padding:20px 0}
+header.scrolled{background:rgba(14,59,67,.96);backdrop-filter:blur(8px);box-shadow:0 6px 30px rgba(0,0,0,.18);padding:12px 0}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nav .logo{width:220px}
+.nav ul{display:flex;gap:34px;list-style:none;color:#D6E2E4;font-weight:500;font-size:15px}
+.nav ul a:hover{color:#fff}
+.nav .btn{padding:11px 18px;font-size:14px}
+.burger{display:none;background:none;border:0;width:40px;height:40px;cursor:pointer}
+.burger span{display:block;height:2px;background:#fff;margin:7px 6px;transition:.3s}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;overflow:hidden;color:#fff;padding:170px 0 120px;
+  background:radial-gradient(900px 600px at 80% 30%,#1f6370 0%,rgba(31,99,112,0) 60%),
+             radial-gradient(600px 500px at 5% 100%,rgba(217,150,43,.18) 0%,rgba(217,150,43,0) 60%),
+             linear-gradient(160deg,var(--petroleo) 0%,var(--petroleo-3) 100%)}
+.hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at 70% 40%,#000 20%,transparent 70%)}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(40px,5.6vw,72px);font-weight:800;margin:20px 0 22px}
+.hero h1 em{font-style:normal;color:var(--ambar-claro);display:block}
+.hero .lead{margin-bottom:36px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px}
+.hero-badges{display:flex;flex-wrap:wrap;gap:26px;margin-top:44px;color:#B9CCCF;font-size:14px}
+.hero-badges div{display:flex;align-items:center;gap:8px}
+.hero-badges b{color:var(--ambar-claro)}
+
+/* hero visual */
+.visual{position:relative;height:520px}
+.win{position:absolute;background:#fff;border-radius:16px;box-shadow:0 40px 90px rgba(0,0,0,.45);overflow:hidden}
+.win-bar{height:34px;background:#F3F1EC;display:flex;align-items:center;gap:7px;padding:0 14px}
+.win-bar i{width:10px;height:10px;border-radius:50%;background:#E0DBD0}
+.win-bar i:nth-child(1){background:#EE6A5F}.win-bar i:nth-child(2){background:#F5BE4F}.win-bar i:nth-child(3){background:#62C554}
+.dash{left:0;top:30px;width:88%;animation:float 7s ease-in-out infinite}
+.dash-body{display:grid;grid-template-columns:120px 1fr;height:330px}
+.dash-side{background:var(--petroleo);padding:18px 14px;display:flex;flex-direction:column;gap:12px}
+.dash-side span{height:9px;border-radius:5px;background:rgba(255,255,255,.18)}
+.dash-side span.on{background:var(--ambar-claro);width:70%}
+.dash-main{padding:20px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto 1fr;gap:12px}
+.kpi{border:1px solid var(--linea);border-radius:10px;padding:12px}
+.kpi small{display:block;font-size:10px;color:var(--pizarra);font-weight:600;letter-spacing:.06em}
+.kpi b{font-size:20px;color:var(--petroleo)}
+.kpi em{font-style:normal;font-size:10px;font-weight:700;color:#1E9E64;margin-left:4px}
+.chart{grid-column:1/-1;border:1px solid var(--linea);border-radius:10px;padding:14px;display:flex;align-items:flex-end;gap:10px}
+.chart div{flex:1;border-radius:6px 6px 0 0;background:linear-gradient(var(--petroleo-2),var(--petroleo));animation:grow 1.4s cubic-bezier(.2,.8,.2,1) both}
+.chart div:nth-child(odd){background:linear-gradient(var(--ambar-claro),var(--ambar))}
+.code{right:-10px;bottom:20px;width:330px;background:#0b1f24;color:#cfe3e6;font:13px/1.7 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;animation:float 7s ease-in-out -3.5s infinite}
+.code .win-bar{background:#13343b}
+.code pre{padding:16px 18px;white-space:pre}
+.k{color:#F0B55A}.s{color:#8FD3C1}.c{color:#6E8A8F}.f{color:#9DC3FF}
+.chip{position:absolute;background:#fff;color:var(--petroleo);border-radius:12px;padding:12px 16px;box-shadow:0 18px 40px rgba(0,0,0,.3);display:flex;align-items:center;gap:12px;font-weight:700;font-size:14px;animation:float 6s ease-in-out infinite}
+.chip i{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:var(--arena)}
+.chip small{display:block;font-weight:500;color:var(--pizarra);font-size:12px}
+.chip.a{left:-30px;bottom:40px;animation-delay:-2s}
+.chip.b{right:10px;top:-10px;animation-delay:-4s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes grow{from{transform:scaleY(0);transform-origin:bottom}to{transform:scaleY(1);transform-origin:bottom}}
+
+/* ---------- TECH STRIP ---------- */
+.strip{background:var(--arena);padding:30px 0;border-bottom:1px solid var(--linea)}
+.strip .wrap{display:flex;align-items:center;gap:40px;flex-wrap:wrap;justify-content:center}
+.strip small{font-weight:700;letter-spacing:.14em;font-size:12px;color:var(--pizarra)}
+.strip span{font-weight:700;font-size:18px;color:#7B8B8E;letter-spacing:-.01em}
+
+/* ---------- SERVICES ---------- */
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:56px;flex-wrap:wrap}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{position:relative;border:1px solid var(--linea);border-radius:var(--r);padding:34px 30px;background:#fff;transition:transform .3s,box-shadow .3s,border-color .3s;overflow:hidden}
+.card:after{content:"";position:absolute;left:0;top:0;height:4px;width:0;background:var(--ambar);transition:width .4s}
+.card:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(14,59,67,.12);border-color:transparent}
+.card:hover:after{width:100%}
+.ico{width:58px;height:58px;border-radius:14px;background:var(--petroleo);display:grid;place-items:center;margin-bottom:22px}
+.ico svg{width:28px;height:28px}
+.card h3{font-size:21px;margin-bottom:10px}
+.card p{color:var(--pizarra);font-size:15.5px}
+
+/* ---------- PROMO ---------- */
+.promo{background:linear-gradient(160deg,var(--petroleo) 0%,var(--petroleo-3) 100%);color:#fff;position:relative;overflow:hidden}
+.promo:before{content:"";position:absolute;right:-180px;top:-120px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(240,181,90,.16),rgba(240,181,90,0) 65%)}
+.promo-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.tag{display:inline-block;background:var(--ambar-claro);color:var(--petroleo);font-weight:800;font-size:13px;letter-spacing:.16em;padding:9px 16px;border-radius:6px}
+.price{display:flex;align-items:flex-end;gap:18px;margin:26px 0 8px}
+.price .from{font-size:20px;color:#BFD0D2;margin-bottom:22px}
+.price .num{font-size:clamp(90px,11vw,140px);font-weight:800;letter-spacing:-.05em;line-height:.85}
+.price .num sup{font-size:.42em;color:var(--ambar-claro);vertical-align:top;position:relative;top:.15em;margin-right:4px}
+.iva{font-weight:800;color:var(--ambar-claro);letter-spacing:.08em;font-size:15px}
+.incl{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 26px;margin:32px 0 26px}
+.incl li{display:flex;gap:12px;align-items:flex-start;color:#E4EDEE;font-weight:500}
+.incl li:before{content:"✓";flex:none;width:24px;height:24px;border-radius:50%;background:var(--ambar-claro);color:var(--petroleo);font-size:13px;font-weight:800;display:grid;place-items:center;margin-top:1px}
+.note{font-size:14px;color:var(--pizarra-claro);margin-bottom:30px}
+.devices{position:relative;height:440px}
+.laptop{position:absolute;left:0;top:20px;width:92%}
+.laptop .scr{background:#1b1f24;border-radius:18px 18px 0 0;padding:14px 14px 18px;box-shadow:0 40px 80px rgba(0,0,0,.45)}
+.laptop .base{height:20px;margin:0 -7%;background:linear-gradient(#cfd5d8,#9aa4a8);border-radius:0 0 22px 22px}
+.site{background:#fff;border-radius:6px;overflow:hidden;color:var(--petroleo);height:300px}
+.site-nav{display:flex;gap:16px;align-items:center;padding:12px 18px;font-size:11px;color:var(--pizarra);border-bottom:1px solid #eef0f1}
+.site-nav b{font-size:14px;color:var(--petroleo);margin-right:auto}
+.site-hero{display:flex;gap:16px;padding:22px 18px;background:linear-gradient(120deg,var(--arena),#fff)}
+.site-hero h4{font-size:22px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.site-hero p{font-size:11px;color:var(--pizarra);margin:8px 0 12px}
+.site-hero .b{display:inline-block;background:var(--ambar);color:#fff;font-size:11px;font-weight:700;padding:7px 12px;border-radius:5px}
+.site-hero .pic{flex:1;border-radius:8px;min-height:110px;background:linear-gradient(135deg,rgba(14,59,67,.9),rgba(21,75,85,.5)),repeating-linear-gradient(45deg,#2b6c77 0 12px,#2f7480 12px 24px)}
+.site-cards{display:flex;gap:10px;padding:6px 18px}
+.site-cards div{flex:1;height:70px;border:1px solid #e7eaeb;border-radius:7px}
+.phone{position:absolute;right:0;bottom:0;width:170px;height:330px;background:#1b1f24;border-radius:28px;padding:10px;box-shadow:0 30px 60px rgba(0,0,0,.5)}
+.phone .site{height:100%;border-radius:20px}
+.phone .site-hero{display:block;padding:16px 12px}.phone .site-hero h4{font-size:16px}
+.phone .site-cards{flex-direction:column}.phone .site-cards div{height:46px}
+.mini-wa{position:absolute;right:20px;bottom:20px;width:34px;height:34px;border-radius:50%;background:var(--wa);display:grid;place-items:center}
+.mini-wa svg{width:18px;height:18px}
+
+/* ---------- PROCESS ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:56px;position:relative}
+.step{position:relative;padding-top:12px}
+.step .n{width:64px;height:64px;border-radius:16px;display:grid;place-items:center;font-weight:800;font-size:22px;background:var(--arena);color:var(--petroleo);margin-bottom:22px;position:relative;z-index:1;transition:background .3s,color .3s}
+.step:hover .n{background:var(--ambar);color:#fff}
+.steps:before{content:"";position:absolute;left:32px;right:32px;top:44px;height:2px;background:repeating-linear-gradient(90deg,var(--linea) 0 10px,transparent 10px 18px)}
+.step:nth-child(1) .n{transform:translateY(24px)}.step:nth-child(2) .n{transform:translateY(12px)}
+.step:nth-child(4) .n{transform:translateY(-12px);background:var(--petroleo);color:var(--ambar-claro)}
+.step h3{font-size:20px;margin:22px 0 8px}
+.step p{color:var(--pizarra);font-size:15px}
+
+/* ---------- WHY ---------- */
+.why{background:var(--arena)}
+.why-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:70px;align-items:center}
+.vals{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.val{background:#fff;border-radius:var(--r);padding:26px;border-left:4px solid var(--ambar)}
+.val h3{font-size:18px;margin-bottom:6px}
+.val p{font-size:14.5px;color:var(--pizarra)}
+.quote{font-size:clamp(26px,3vw,36px);font-weight:700;letter-spacing:-.02em;line-height:1.25;margin:20px 0 26px}
+.quote em{font-style:normal;color:var(--ambar-prof)}
+
+/* ---------- CTA ---------- */
+.cta{background:radial-gradient(700px 400px at 90% 0%,rgba(240,181,90,.2),transparent 60%),linear-gradient(160deg,var(--petroleo),var(--petroleo-3));color:#fff;border-radius:24px;padding:70px 60px;display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center;position:relative;overflow:hidden}
+.cta h2{margin-top:10px}
+.cta .contact{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.cta .phone-num{font-size:30px;font-weight:800;letter-spacing:.01em}
+.cta .phone-num small{display:block;font-size:13px;font-weight:600;letter-spacing:.12em;color:var(--ambar-claro)}
+.cta-iso{position:absolute;right:-60px;bottom:-80px;width:340px;opacity:.06}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--petroleo-3);color:#B9CCCF;padding:60px 0 30px;margin-top:110px}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08)}
+.foot .logo{width:220px;margin-bottom:16px}
+.foot h4{color:#fff;font-size:14px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+.foot ul{list-style:none;display:grid;gap:10px;font-size:15px}
+.foot a:hover{color:var(--ambar-claro)}
+.copy{padding-top:24px;font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+/* ---------- FLOATING WHATSAPP ---------- */
+.wa-float{position:fixed;right:24px;bottom:24px;z-index:60;display:flex;align-items:center;gap:12px}
+.wa-float .bubble{background:#fff;color:var(--petroleo);font-weight:600;font-size:14px;padding:10px 16px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.18);opacity:0;transform:translateX(10px);transition:.3s;pointer-events:none;white-space:nowrap}
+.wa-float:hover .bubble,.wa-float.hint .bubble{opacity:1;transform:none}
+.wa-btn{width:64px;height:64px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 12px 30px rgba(37,211,102,.45);position:relative}
+.wa-btn:before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--wa);animation:pulse 2.2s infinite;z-index:-1}
+.wa-btn svg{width:34px;height:34px}
+@keyframes pulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.7);opacity:0}}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:980px){
+  section{padding:80px 0}
+  .hero{padding:140px 0 90px}
+  .hero-grid,.promo-grid,.why-grid,.cta{grid-template-columns:1fr}
+  .visual{height:440px;margin-top:20px}
+  .services{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr;row-gap:40px}
+  .steps:before{display:none}
+  .step .n{transform:none!important}
+  .foot{grid-template-columns:1fr 1fr}
+  .cta{padding:50px 34px}
+  .nav ul{position:fixed;inset:70px 16px auto 16px;flex-direction:column;gap:0;background:var(--petroleo);border-radius:14px;padding:10px;box-shadow:0 20px 50px rgba(0,0,0,.35);display:none}
+  .nav ul.open{display:flex}
+  .nav ul a{display:block;padding:14px 16px}
+  .nav .btn{display:none}
+  .burger{display:block}
+}
+@media (max-width:640px){
+  .wrap{padding:0 16px}
+  .nav .logo{width:180px}
+  .services,.vals,.incl{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .visual{height:380px}
+  .dash{width:100%}
+  .dash-body{grid-template-columns:70px 1fr;height:260px}
+  .dash-main{grid-template-columns:1fr 1fr}
+  .dash-main .kpi:nth-child(3){display:none}
+  .code,.chip.a{display:none}
+  .visual{height:360px}
+  .chip.b{right:0;top:-20px}
+  .kpi b{font-size:15px}
+  .devices{height:360px}
+  .phone{width:130px;height:260px}
+  .foot{grid-template-columns:1fr}
+  .cta{padding:40px 22px;border-radius:18px}
+  .hero-badges{gap:16px}
+  .wa-float .bubble{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header id="top">
+  <div class="wrap nav">
+    <a href="#inicio" class="logo" aria-label="Evoluciona Tech"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 684 140"><rect opacity="0" width="684.4347" height="140" fill="#0E3B43"/><polygon points="32.00,53.00 49.00,53.00 49.00,63.00 90.00,63.00 90.00,79.00 49.00,79.00 49.00,92.00 72.00,92.00 72.00,108.00 32.00,108.00" fill="#FFFFFF"/><polygon points="32.00,32.00 112.00,32.00 102.00,48.00 32.00,48.00" fill="#F0B55A"/><path d="M150.875 94.08H182.465V86.7675H159.5525V73.2475H180.645V66.0325H159.5525V52.967499999999994H182.335V45.654999999999994H150.875ZM200.4219 94.08H209.8794L223.4644 57.745H214.49439999999998L207.8969 77.505C206.8244 80.7225 206.0444 83.9725 205.2644 87.255C204.4519 83.94 203.6394 80.7225 202.5669 77.505L195.9369 57.745H186.9019ZM243.0463 94.8275C253.6413 94.8275 260.4338 87.2875 260.4338 76.1075C260.4338 64.7975 253.6413 57.29 243.0463 57.29C232.4513 57.29 225.6913 64.7975 225.6913 76.1075C225.6913 87.2875 232.4513 94.8275 243.0463 94.8275ZM243.0463 87.97C237.1638 87.97 234.3038 82.705 234.3038 76.075C234.3038 69.38 237.1638 64.1475 243.0463 64.1475C248.9613 64.1475 251.8538 69.38 251.8538 76.075C251.8538 82.705 248.9613 87.97 243.0463 87.97ZM275.5957 45.654999999999994H267.14570000000003V94.08H275.5957ZM296.3476 94.535C301.6126 94.535 305.4151 92.0 307.5926 86.8L307.6576 94.08H315.6851V57.745H307.2026V79.0325C307.2026 84.2975 303.9526 87.35249999999999 299.4676 87.35249999999999C295.0476 87.35249999999999 292.3501 84.4275 292.3501 79.5525V57.745H283.9001V80.85249999999999C283.9001 89.595 288.8726 94.535 296.3476 94.535ZM339.752 94.8275C347.9095 94.8275 353.9545 90.4075 355.5145 83.16L347.617 81.5025C346.7395 85.435 343.97700000000003 87.97 339.817 87.97C333.9345 87.97 331.0095 82.8025 331.0095 76.075C331.0095 69.2825 333.9345 64.1475 339.817 64.1475C343.91200000000003 64.1475 346.6095 66.585 347.5195 70.35499999999999L355.41700000000003 68.69749999999999C353.857 61.6125 347.8445 57.29 339.752 57.29C329.157 57.29 322.397 64.7975 322.397 76.1075C322.397 87.2875 329.157 94.8275 339.752 94.8275ZM362.0964 94.08H370.5464V57.745H362.0964ZM366.3214 52.61C369.01890000000003 52.61 371.2614 50.529999999999994 371.2614 47.9625C371.2614 45.394999999999996 369.01890000000003 43.3475 366.3214 43.3475C363.6239 43.3475 361.4139 45.394999999999996 361.4139 47.9625C361.4139 50.529999999999994 363.6239 52.61 366.3214 52.61ZM394.61330000000004 94.8275C405.2083 94.8275 412.0008 87.2875 412.0008 76.1075C412.0008 64.7975 405.2083 57.29 394.61330000000004 57.29C384.0183 57.29 377.2583 64.7975 377.2583 76.1075C377.2583 87.2875 384.0183 94.8275 394.61330000000004 94.8275ZM394.61330000000004 87.97C388.73080000000004 87.97 385.87080000000003 82.705 385.87080000000003 76.075C385.87080000000003 69.38 388.73080000000004 64.1475 394.61330000000004 64.1475C400.52830000000006 64.1475 403.42080000000004 69.38 403.42080000000004 76.075C403.42080000000004 82.705 400.52830000000006 87.97 394.61330000000004 87.97ZM427.1627000000001 72.79249999999999C427.1627000000001 67.5275 430.4127000000001 64.4725 434.93020000000007 64.4725C439.3502000000001 64.4725 442.0152000000001 67.3975 442.0152000000001 72.2725V94.08H450.4652000000001V70.9725C450.4652000000001 62.23 445.5252000000001 57.29 438.0502000000001 57.29C432.7202000000001 57.29 428.9502000000001 59.89 426.80520000000007 64.99249999999999L426.7077000000001 57.745H418.7127000000001V94.08H427.1627000000001ZM468.90960000000007 94.8275C474.56460000000004 94.8275 478.0096000000001 92.195 479.60210000000006 89.075H479.92710000000005V94.08H488.0196000000001V69.8025C488.0196000000001 60.1175 480.0246000000001 57.29 473.1996000000001 57.29C465.91960000000006 57.29 459.93960000000004 60.3775 457.79460000000006 66.78L465.62710000000004 68.3725C466.5046000000001 65.9675 469.0071000000001 63.78999999999999 473.23210000000006 63.78999999999999C477.35960000000006 63.78999999999999 479.5696000000001 65.87 479.5696000000001 69.4125V69.57499999999999C479.5696000000001 72.0775 476.9046000000001 72.175 470.59960000000007 72.8575C463.5796000000001 73.60499999999999 456.7546000000001 75.685 456.7546000000001 83.875C456.7546000000001 91.02499999999999 461.98710000000005 94.8275 468.90960000000007 94.8275ZM471.0871000000001 88.55499999999999C467.5121000000001 88.55499999999999 464.9446000000001 86.92999999999999 464.9446000000001 83.7775C464.9446000000001 80.4625 467.80460000000005 79.065 471.60710000000006 78.545C473.78460000000007 78.2525 478.49710000000005 77.66749999999999 479.6346000000001 76.7575V81.0475C479.6346000000001 85.0775 476.28710000000007 88.55499999999999 471.0871000000001 88.55499999999999Z" fill="#FFFFFF"/><path d="M511.6640000000001 51.114999999999995H526.9065V94.08H533.0815000000001V51.114999999999995H548.2590000000001V45.654999999999994H511.6640000000001ZM565.9884000000001 94.86C573.4309000000001 94.86 578.8584000000001 91.1225 580.5484000000001 85.63L574.8934000000002 84.07C573.5284000000001 87.77499999999999 570.3109000000001 89.66 566.0209000000001 89.66C559.5859000000002 89.66 555.1659000000001 85.5 554.8734000000001 77.895H581.1334V75.4575C581.1334 62.035 573.0084 57.29 565.3059000000001 57.29C555.3934000000002 57.29 548.9584000000001 65.0575 548.9584000000001 76.205C548.9584000000001 87.38499999999999 555.4584000000001 94.86 565.9884000000001 94.86ZM554.9059000000001 72.955C555.2634 67.3975 559.0659 62.489999999999995 565.3059000000001 62.489999999999995C571.2859000000001 62.489999999999995 574.6334 66.78 575.1859000000001 72.955ZM603.6403000000001 94.86C610.7578000000001 94.86 616.5428000000002 90.99249999999999 618.4928000000001 84.525L612.9028000000001 82.9325C611.8303000000001 86.865 608.5153000000001 89.6275 603.6403000000001 89.6275C596.3928000000001 89.6275 593.0453000000001 83.28999999999999 593.0453000000001 76.14C593.0453000000001 68.8925 596.3928000000001 62.522499999999994 603.6403000000001 62.522499999999994C608.4178000000002 62.522499999999994 611.6678000000002 65.1875 612.7403000000002 68.925L618.3628000000001 67.3325C616.3803000000001 60.995 610.6603000000001 57.29 603.6403000000001 57.29C593.7603000000001 57.29 587.0978000000001 64.765 587.0978000000001 76.14C587.0978000000001 87.35249999999999 593.7603000000001 94.86 603.6403000000001 94.86ZM632.0622000000001 72.30499999999999C632.0622000000001 66.0975 635.9947000000001 62.55499999999999 641.2272 62.55499999999999C646.2972000000001 62.55499999999999 649.4172000000001 65.9025 649.4172000000001 71.49249999999999V94.08H655.2997V71.005C655.2997 61.8075 650.3272000000001 57.29 642.9822 57.29C638.2372 57.29 634.4347 59.207499999999996 632.0622000000001 64.05V45.654999999999994H626.2122V94.08H632.0622000000001Z" fill="#A9C0C3"/></svg></a>
+    <ul id="menu">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#paginas-web">Páginas web</a></li>
+      <li><a href="#proceso">Cómo trabajamos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a class="btn btn-amb" href="https://wa.me/593992869895?text=Hola%20Evoluciona%20Tech%2C%20quisiera%20informaci%C3%B3n%20sobre%20sus%20servicios." target="_blank" rel="noopener">Cotiza gratis</a>
+    <button class="burger" aria-label="Abrir menú" onclick="document.getElementById('menu').classList.toggle('open')"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero dark" id="inicio">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Desarrollo de software y soluciones tecnológicas</span>
+      <h1>Tu negocio evoluciona.<em>Tu tecnología también.</em></h1>
+      <p class="lead">Diseñamos, construimos y evolucionamos el software que tu empresa necesita: aplicaciones web, integraciones entre sistemas y automatización de procesos, de la idea a producción.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-amb" href="https://wa.me/593992869895?text=Hola%20Evoluciona%20Tech%2C%20quisiera%20informaci%C3%B3n%20sobre%20sus%20servicios." target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path fill="#fff" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg> Conversemos por WhatsApp</a>
+        <a class="btn btn-ghost" href="#servicios">Ver servicios →</a>
+      </div>
+      <div class="hero-badges">
+        <div><b>◆</b> Metodologías ágiles</div>
+        <div><b>◆</b> Entregas frecuentes</div>
+        <div><b>◆</b> Comunicación transparente</div>
+      </div>
+    </div>
+
+    <div class="visual" aria-hidden="true">
+      <div class="win dash">
+        <div class="win-bar"><i></i><i></i><i></i></div>
+        <div class="dash-body">
+          <div class="dash-side"><span class="on"></span><span></span><span></span><span style="width:60%"></span><span></span></div>
+          <div class="dash-main">
+            <div class="kpi"><small>PROCESOS</small><b>Automatizados</b></div>
+            <div class="kpi"><small>SISTEMAS</small><b>Integrados</b></div>
+            <div class="kpi"><small>ESTADO</small><b>En línea</b><em>●</em></div>
+            <div class="chart">
+              <div style="height:30%;animation-delay:.1s"></div><div style="height:45%;animation-delay:.2s"></div>
+              <div style="height:38%;animation-delay:.3s"></div><div style="height:58%;animation-delay:.4s"></div>
+              <div style="height:52%;animation-delay:.5s"></div><div style="height:72%;animation-delay:.6s"></div>
+              <div style="height:66%;animation-delay:.7s"></div><div style="height:90%;animation-delay:.8s"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="win code">
+        <div class="win-bar"><i></i><i></i><i></i></div>
+<pre><span class="c">// tu negocio, siguiente nivel</span>
+<span class="k">const</span> empresa = <span class="k">await</span> <span class="f">evolucionar</span>({
+  procesos: <span class="s">'automatizados'</span>,
+  sistemas: <span class="s">'integrados'</span>,
+  clientes: <span class="s">'felices'</span>
+});</pre>
+      </div>
+      <div class="chip b"><i><svg viewBox="0 0 100 100" width="22" height="22"><polygon points="12.00,33.00 29.00,33.00 29.00,43.00 70.00,43.00 70.00,59.00 29.00,59.00 29.00,72.00 52.00,72.00 52.00,88.00 12.00,88.00" fill="#0E3B43"/><polygon points="12.00,12.00 92.00,12.00 82.00,28.00 12.00,28.00" fill="#D9962B"/></svg></i><div>Hecho a la medida<small>para tu operación</small></div></div>
+      <div class="chip a"><i style="background:#E9F8EF"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="#25D366" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></i><div>Respuesta rápida<small>por WhatsApp</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TECH STRIP ============ -->
+<div class="strip">
+  <div class="wrap">
+    <small>TECNOLOGÍAS</small>
+    <span>Java</span><span>Spring</span><span>React</span><span>Angular</span><span>Node.js</span><span>SQL</span><span>APIs REST</span><span>Cloud</span>
+  </div>
+</div>
+
+<!-- ============ SERVICES ============ -->
+<section id="servicios">
+  <div class="wrap">
+    <div class="head rv">
+      <div>
+        <span class="eyebrow">Servicios</span>
+        <h2>Soluciones tecnológicas<br>de punta a punta</h2>
+      </div>
+      <p class="lead">Construimos la herramienta que tu negocio necesita, no la que el mercado te obliga a usar.</p>
+    </div>
+    <div class="services">
+      <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#F0B55A" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8M12 18v3"/></svg></div>
+        <h3>Aplicaciones web</h3><p>Sistemas, portales y páginas web modernas, rápidas y adaptadas a cualquier dispositivo.</p></div>
+      <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#F0B55A" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M9 6h5a4 4 0 0 1 4 4v5M15 18h-5a4 4 0 0 1-4-4V9"/></svg></div>
+        <h3>Integraciones entre sistemas</h3><p>Conectamos tu ERP, pasarelas de pago y plataformas mediante APIs para que tus datos fluyan sin trabajo manual.</p></div>
+      <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#F0B55A" stroke-width="2"><path d="M12 3v3M12 18v3M4.2 7.5l2.6 1.5M17.2 15l2.6 1.5M4.2 16.5 6.8 15M17.2 9l2.6-1.5"/><circle cx="12" cy="12" r="4"/></svg></div>
+        <h3>Automatización de procesos</h3><p>Eliminamos tareas repetitivas para que tu equipo dedique su tiempo a lo que realmente aporta valor.</p></div>
+      <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#F0B55A" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/></svg></div>
+        <h3>QA y testing</h3><p>Aseguramos la calidad de cada entrega con pruebas funcionales y automatizadas antes de llegar a producción.</p></div>
+      <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#F0B55A" stroke-width="2"><path d="M7 18a5 5 0 1 1 1-9.9A6 6 0 0 1 19.5 10 4 4 0 0 1 18 18z"/></svg></div>
+        <h3>Arquitectura y nube</h3><p>Diseñamos soluciones escalables, seguras y listas para crecer junto a tu negocio.</p></div>
+      <div class="card rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#F0B55A" stroke-width="2"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></div>
+        <h3>Asesoría tecnológica</h3><p>Te acompañamos a tomar las mejores decisiones tecnológicas según tus objetivos y presupuesto.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROMO ============ -->
+<section class="promo dark" id="paginas-web">
+  <div class="wrap promo-grid">
+    <div class="rv">
+      <span class="tag">PROMO DE LANZAMIENTO</span>
+      <h2 style="margin-top:22px">Tu negocio, en internet.</h2>
+      <p class="lead">Página web profesional, lista para que tus clientes te encuentren.</p>
+      <div class="price"><span class="from">desde</span><span class="num"><sup>$</sup>99</span></div>
+      <div class="iva">IVA INCLUIDO</div>
+      <ul class="incl">
+        <li>Hasta 5 secciones</li>
+        <li>Adaptada a celulares</li>
+        <li>Botón de WhatsApp</li>
+        <li>Formulario y Google Maps</li>
+        <li>Enlaces a redes sociales</li>
+        <li>Entrega en 5 a 7 días hábiles</li>
+      </ul>
+      <p class="note">Dominio + hosting: $30 adicionales al año. Nosotros nos encargamos de que tu página esté siempre en línea.</p>
+      <a class="btn btn-wa" href="https://wa.me/593992869895?text=Hola%20Evoluciona%20Tech%2C%20me%20interesa%20la%20p%C3%A1gina%20web%20desde%20%2499.%20%C2%BFMe%20pueden%20dar%20m%C3%A1s%20informaci%C3%B3n%3F" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path fill="#fff" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg> Quiero mi página web</a>
+    </div>
+    <div class="devices rv" aria-hidden="true">
+      <div class="laptop">
+        <div class="scr"><div class="site">
+          <div class="site-nav"><b>Tu Negocio</b><span>Inicio</span><span>Nosotros</span><span>Servicios</span><span>Contacto</span></div>
+          <div class="site-hero"><div><h4>Lo mejor para<br>tus clientes</h4><p>Calidad y atención que marcan la diferencia.</p><span class="b">Contáctanos</span></div><div class="pic"></div></div>
+          <div class="site-cards"><div></div><div></div><div></div></div>
+        </div></div>
+        <div class="base"></div>
+      </div>
+      <div class="phone"><div class="site" style="position:relative">
+        <div class="site-nav"><b>Tu Negocio</b>☰</div>
+        <div class="site-hero"><h4>Lo mejor para tus clientes</h4><p>Calidad y atención que marcan la diferencia.</p><span class="b">Contáctanos</span></div>
+        <div class="site-cards"><div></div><div></div></div>
+        <span class="mini-wa" style="right:10px;bottom:10px"><svg viewBox="0 0 24 24"><path fill="#fff" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></span>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section id="proceso">
+  <div class="wrap">
+    <div class="rv" style="text-align:center;max-width:720px;margin:0 auto">
+      <span class="eyebrow">Cómo trabajamos</span>
+      <h2>Cada proyecto avanza por etapas</h2>
+      <p class="lead" style="margin:0 auto">Primero entendemos tu negocio, después elegimos la tecnología.</p>
+    </div>
+    <div class="steps">
+      <div class="step rv"><div class="n">01</div><h3>Entendemos</h3><p>Analizamos tu operación, tus objetivos y el problema real que hay que resolver.</p></div>
+      <div class="step rv"><div class="n">02</div><h3>Diseñamos</h3><p>Proponemos la solución, el alcance, los tiempos y el presupuesto con total claridad.</p></div>
+      <div class="step rv"><div class="n">03</div><h3>Construimos</h3><p>Desarrollamos con entregas frecuentes para que veas el avance desde el inicio.</p></div>
+      <div class="step rv"><div class="n">04</div><h3>Evolucionamos</h3><p>Publicamos, damos soporte y seguimos mejorando la solución junto a tu negocio.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY ============ -->
+<section class="why">
+  <div class="wrap why-grid">
+    <div class="rv">
+      <span class="eyebrow">Por qué Evoluciona Tech</span>
+      <p class="quote">La tecnología no es el fin.<br><em>Es el medio para evolucionar.</em></p>
+      <p class="lead">Trabajamos como una extensión de tu equipo: hablamos en términos de negocio, cumplimos lo que prometemos y te mantenemos informado en cada paso.</p>
+    </div>
+    <div class="vals">
+      <div class="val rv"><h3>Claridad</h3><p>Alcance, tiempos y costos definidos desde el inicio, sin sorpresas.</p></div>
+      <div class="val rv"><h3>Cercanía</h3><p>Un aliado tecnológico que entiende tu negocio, no solo un proveedor.</p></div>
+      <div class="val rv"><h3>Calidad</h3><p>Buenas prácticas de desarrollo y pruebas en cada entrega.</p></div>
+      <div class="val rv"><h3>Agilidad</h3><p>Entregas frecuentes para que veas resultados rápido.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section id="contacto" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="cta dark rv">
+      <div class="cta-iso"><svg viewBox="0 0 100 100"><polygon points="12.00,33.00 29.00,33.00 29.00,43.00 70.00,43.00 70.00,59.00 29.00,59.00 29.00,72.00 52.00,72.00 52.00,88.00 12.00,88.00" fill="#fff"/><polygon points="12.00,12.00 92.00,12.00 82.00,28.00 12.00,28.00" fill="#fff"/></svg></div>
+      <div>
+        <span class="eyebrow">Contacto</span>
+        <h2>¿Listo para dar el siguiente paso?</h2>
+        <p class="lead">Cuéntanos tu idea o el problema que quieres resolver. Te respondemos con una propuesta clara y sin compromiso.</p>
+      </div>
+      <div class="contact">
+        <div class="phone-num"><small>WHATSAPP</small>099 286 9895</div>
+        <a class="btn btn-wa" href="https://wa.me/593992869895?text=Hola%20Evoluciona%20Tech%2C%20quisiera%20informaci%C3%B3n%20sobre%20sus%20servicios." target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path fill="#fff" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg> Escríbenos ahora</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 684 140"><rect opacity="0" width="684.4347" height="140" fill="#0E3B43"/><polygon points="32.00,53.00 49.00,53.00 49.00,63.00 90.00,63.00 90.00,79.00 49.00,79.00 49.00,92.00 72.00,92.00 72.00,108.00 32.00,108.00" fill="#FFFFFF"/><polygon points="32.00,32.00 112.00,32.00 102.00,48.00 32.00,48.00" fill="#F0B55A"/><path d="M150.875 94.08H182.465V86.7675H159.5525V73.2475H180.645V66.0325H159.5525V52.967499999999994H182.335V45.654999999999994H150.875ZM200.4219 94.08H209.8794L223.4644 57.745H214.49439999999998L207.8969 77.505C206.8244 80.7225 206.0444 83.9725 205.2644 87.255C204.4519 83.94 203.6394 80.7225 202.5669 77.505L195.9369 57.745H186.9019ZM243.0463 94.8275C253.6413 94.8275 260.4338 87.2875 260.4338 76.1075C260.4338 64.7975 253.6413 57.29 243.0463 57.29C232.4513 57.29 225.6913 64.7975 225.6913 76.1075C225.6913 87.2875 232.4513 94.8275 243.0463 94.8275ZM243.0463 87.97C237.1638 87.97 234.3038 82.705 234.3038 76.075C234.3038 69.38 237.1638 64.1475 243.0463 64.1475C248.9613 64.1475 251.8538 69.38 251.8538 76.075C251.8538 82.705 248.9613 87.97 243.0463 87.97ZM275.5957 45.654999999999994H267.14570000000003V94.08H275.5957ZM296.3476 94.535C301.6126 94.535 305.4151 92.0 307.5926 86.8L307.6576 94.08H315.6851V57.745H307.2026V79.0325C307.2026 84.2975 303.9526 87.35249999999999 299.4676 87.35249999999999C295.0476 87.35249999999999 292.3501 84.4275 292.3501 79.5525V57.745H283.9001V80.85249999999999C283.9001 89.595 288.8726 94.535 296.3476 94.535ZM339.752 94.8275C347.9095 94.8275 353.9545 90.4075 355.5145 83.16L347.617 81.5025C346.7395 85.435 343.97700000000003 87.97 339.817 87.97C333.9345 87.97 331.0095 82.8025 331.0095 76.075C331.0095 69.2825 333.9345 64.1475 339.817 64.1475C343.91200000000003 64.1475 346.6095 66.585 347.5195 70.35499999999999L355.41700000000003 68.69749999999999C353.857 61.6125 347.8445 57.29 339.752 57.29C329.157 57.29 322.397 64.7975 322.397 76.1075C322.397 87.2875 329.157 94.8275 339.752 94.8275ZM362.0964 94.08H370.5464V57.745H362.0964ZM366.3214 52.61C369.01890000000003 52.61 371.2614 50.529999999999994 371.2614 47.9625C371.2614 45.394999999999996 369.01890000000003 43.3475 366.3214 43.3475C363.6239 43.3475 361.4139 45.394999999999996 361.4139 47.9625C361.4139 50.529999999999994 363.6239 52.61 366.3214 52.61ZM394.61330000000004 94.8275C405.2083 94.8275 412.0008 87.2875 412.0008 76.1075C412.0008 64.7975 405.2083 57.29 394.61330000000004 57.29C384.0183 57.29 377.2583 64.7975 377.2583 76.1075C377.2583 87.2875 384.0183 94.8275 394.61330000000004 94.8275ZM394.61330000000004 87.97C388.73080000000004 87.97 385.87080000000003 82.705 385.87080000000003 76.075C385.87080000000003 69.38 388.73080000000004 64.1475 394.61330000000004 64.1475C400.52830000000006 64.1475 403.42080000000004 69.38 403.42080000000004 76.075C403.42080000000004 82.705 400.52830000000006 87.97 394.61330000000004 87.97ZM427.1627000000001 72.79249999999999C427.1627000000001 67.5275 430.4127000000001 64.4725 434.93020000000007 64.4725C439.3502000000001 64.4725 442.0152000000001 67.3975 442.0152000000001 72.2725V94.08H450.4652000000001V70.9725C450.4652000000001 62.23 445.5252000000001 57.29 438.0502000000001 57.29C432.7202000000001 57.29 428.9502000000001 59.89 426.80520000000007 64.99249999999999L426.7077000000001 57.745H418.7127000000001V94.08H427.1627000000001ZM468.90960000000007 94.8275C474.56460000000004 94.8275 478.0096000000001 92.195 479.60210000000006 89.075H479.92710000000005V94.08H488.0196000000001V69.8025C488.0196000000001 60.1175 480.0246000000001 57.29 473.1996000000001 57.29C465.91960000000006 57.29 459.93960000000004 60.3775 457.79460000000006 66.78L465.62710000000004 68.3725C466.5046000000001 65.9675 469.0071000000001 63.78999999999999 473.23210000000006 63.78999999999999C477.35960000000006 63.78999999999999 479.5696000000001 65.87 479.5696000000001 69.4125V69.57499999999999C479.5696000000001 72.0775 476.9046000000001 72.175 470.59960000000007 72.8575C463.5796000000001 73.60499999999999 456.7546000000001 75.685 456.7546000000001 83.875C456.7546000000001 91.02499999999999 461.98710000000005 94.8275 468.90960000000007 94.8275ZM471.0871000000001 88.55499999999999C467.5121000000001 88.55499999999999 464.9446000000001 86.92999999999999 464.9446000000001 83.7775C464.9446000000001 80.4625 467.80460000000005 79.065 471.60710000000006 78.545C473.78460000000007 78.2525 478.49710000000005 77.66749999999999 479.6346000000001 76.7575V81.0475C479.6346000000001 85.0775 476.28710000000007 88.55499999999999 471.0871000000001 88.55499999999999Z" fill="#FFFFFF"/><path d="M511.6640000000001 51.114999999999995H526.9065V94.08H533.0815000000001V51.114999999999995H548.2590000000001V45.654999999999994H511.6640000000001ZM565.9884000000001 94.86C573.4309000000001 94.86 578.8584000000001 91.1225 580.5484000000001 85.63L574.8934000000002 84.07C573.5284000000001 87.77499999999999 570.3109000000001 89.66 566.0209000000001 89.66C559.5859000000002 89.66 555.1659000000001 85.5 554.8734000000001 77.895H581.1334V75.4575C581.1334 62.035 573.0084 57.29 565.3059000000001 57.29C555.3934000000002 57.29 548.9584000000001 65.0575 548.9584000000001 76.205C548.9584000000001 87.38499999999999 555.4584000000001 94.86 565.9884000000001 94.86ZM554.9059000000001 72.955C555.2634 67.3975 559.0659 62.489999999999995 565.3059000000001 62.489999999999995C571.2859000000001 62.489999999999995 574.6334 66.78 575.1859000000001 72.955ZM603.6403000000001 94.86C610.7578000000001 94.86 616.5428000000002 90.99249999999999 618.4928000000001 84.525L612.9028000000001 82.9325C611.8303000000001 86.865 608.5153000000001 89.6275 603.6403000000001 89.6275C596.3928000000001 89.6275 593.0453000000001 83.28999999999999 593.0453000000001 76.14C593.0453000000001 68.8925 596.3928000000001 62.522499999999994 603.6403000000001 62.522499999999994C608.4178000000002 62.522499999999994 611.6678000000002 65.1875 612.7403000000002 68.925L618.3628000000001 67.3325C616.3803000000001 60.995 610.6603000000001 57.29 603.6403000000001 57.29C593.7603000000001 57.29 587.0978000000001 64.765 587.0978000000001 76.14C587.0978000000001 87.35249999999999 593.7603000000001 94.86 603.6403000000001 94.86ZM632.0622000000001 72.30499999999999C632.0622000000001 66.0975 635.9947000000001 62.55499999999999 641.2272 62.55499999999999C646.2972000000001 62.55499999999999 649.4172000000001 65.9025 649.4172000000001 71.49249999999999V94.08H655.2997V71.005C655.2997 61.8075 650.3272000000001 57.29 642.9822 57.29C638.2372 57.29 634.4347 59.207499999999996 632.0622000000001 64.05V45.654999999999994H626.2122V94.08H632.0622000000001Z" fill="#A9C0C3"/></svg></div>
+        <p>Tu negocio evoluciona. Tu tecnología también.<br>Desarrollo de software y soluciones tecnológicas.</p>
+      </div>
+      <div>
+        <h4>Servicios</h4>
+        <ul><li><a href="#servicios">Aplicaciones web</a></li><li><a href="#servicios">Integraciones</a></li><li><a href="#servicios">Automatización</a></li><li><a href="#paginas-web">Páginas web desde $99</a></li></ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul><li><a href="https://wa.me/593992869895?text=Hola%20Evoluciona%20Tech%2C%20quisiera%20informaci%C3%B3n%20sobre%20sus%20servicios." target="_blank" rel="noopener">WhatsApp: 099 286 9895</a></li><li><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li><li>Ecuador</li></ul>
+      </div>
+    </div>
+    <div class="copy"><span>© <span id="y"></span> Evoluciona Tech. Todos los derechos reservados.</span><a href="#inicio">Volver arriba ↑</a></div>
+  </div>
+</footer>
+
+<!-- ============ FLOATING WHATSAPP ============ -->
+<a class="wa-float" id="waf" href="https://wa.me/593992869895?text=Hola%20Evoluciona%20Tech%2C%20quisiera%20informaci%C3%B3n%20sobre%20sus%20servicios." target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <span class="bubble">¿Hablamos? Escríbenos 👋</span>
+  <span class="wa-btn"><svg viewBox="0 0 24 24"><path fill="#fff" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></span>
+</a>
+
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+const h=document.querySelector('header');
+const onS=()=>h.classList.toggle('scrolled',scrollY>30);onS();addEventListener('scroll',onS,{passive:true});
+document.querySelectorAll('#menu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('menu').classList.remove('open')));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3)*90+'ms';io.observe(el)});
+const w=document.getElementById('waf');setTimeout(()=>{w.classList.add('hint');setTimeout(()=>w.classList.remove('hint'),5000)},2500);
+</script>
+</body>
+</html>
